@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+jim:
+  email: jim@comp
+
+bill:
+  email: bill@comp
+
+jake:
+  email: jake@shop
+
+bob:
+  email: bob@shop
+
+admin:
+  email: admin@progcomp
+
+visitor:
+  email: visitor@comp

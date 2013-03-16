@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+jim:
+  user: jim
+  team: jim_bill
+
+bill:
+  user: bill
+  team: jim_bill
+
+jake:
+  user: jake
+  team: jake_bob
+
+bob:
+  user: bob
+  team: jake_bob

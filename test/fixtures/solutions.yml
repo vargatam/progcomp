@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+jim_one_a:
+  problem: one_a
+  user: jim
+  solution: 2
+  is_correct: true
+  score: 20
+
+bill_two_b_first:
+  problem: two_b
+  user: bill
+  solution: violet
+  is_correct: false
+  score: -1
+
+bill_two_b_second:
+  problem: two_b
+  user: bill
+  solution: yellow
+  is_correct: false
+  score: -1
+
+jake_one_a_first:
+  problem: one_a
+  user: jake
+  solution: 3
+  is_correct: false
+  score: -1
+
+jake_one_a_second:
+  problem: one_a
+  user: jake
+  solution: 2
+  is_correct: true
+  score: 20
+
+jake_one_b:
+  problem: one_b
+  user: jake
+  solution: 10
+  is_correct: true
+  score: 30

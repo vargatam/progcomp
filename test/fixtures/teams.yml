@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+jim_bill:
+  name: Jim & Bill
+  number: 1
+  competition: current
+
+jake_bob:
+  name: Jake & Bob
+  number: 2
+  competition: current

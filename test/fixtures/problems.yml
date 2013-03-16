@@ -1,0 +1,77 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+--- !omap
+- one:
+    number: 1
+    title: First Problem
+    text: Just some test. Find the result. Its 2. Or 5.
+    competition: current
+    solution:
+    solution_type: none
+    point: 0
+
+- one_a:
+    number: a
+    title: Problem one, part a
+    text: Result is 2....
+    competition: current
+    parent: one
+    solution: 2
+    solution_type: integer
+    point: 20
+
+- one_b:
+    number: b
+    title: Problem one, part b
+    text: Result is 10....
+    competition: current
+    parent: one
+    solution: 10
+    solution_type: integer
+    point: 30
+
+- two:
+    number: 2
+    title: Second Problem
+    text: Just some test. Find the result...
+    competition: current
+    solution:
+    solution_type: none
+    point: 0
+
+- two_a:
+    number: a
+    title: Problem two, part a
+    text: Result is awesome....
+    competition: current
+    parent: two
+    solution: awesome
+    solution_type: string
+    point: 20
+
+- two_b:
+    number: b
+    title: Problem two, part b
+    text: Result is blue....
+    competition: current
+    parent: two
+    solution: blue
+    solution_type: string
+    point: 30
+
+- past_prob:
+    number: 1
+    title: Old problem
+    text: Just some test. Find the result...
+    competition: past
+    solution: 10
+    solution_type: integer
+    point: 10
+
+- future_prob:
+    number: 1
+    title: Future problem
+    text: Just some test. Find the result...
+    competition: future
+    solution: 10
+    solution_type: integer
+    point: 10
