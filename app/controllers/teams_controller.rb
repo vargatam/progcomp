@@ -1,8 +1,9 @@
 class TeamsController < ApplicationController
+  before_filter :get_competition
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    @teams = @competition.teams
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
-    @team = Team.new
+    @team = @competition.teams.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +41,11 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(params[:team])
+    @team = @competition.teams.build(params[:team])
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { redirect_to competition_team_url(@competition, @team), notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to competition_team_url(@competition, @team), notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +77,13 @@ class TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to teams_url }
+      format.html { redirect_to competition_teams_url(@competition) }
       format.json { head :no_content }
     end
+  end
+
+  def get_competition
+    @competition = Competition.find(params[:competition_id])
+    #|| Competition.default  -- TODO this doesn't work with routes conf as of now
   end
 end

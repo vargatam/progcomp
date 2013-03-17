@@ -1,8 +1,9 @@
 class ProblemsController < ApplicationController
+  before_filter :get_competition
   # GET /problems
   # GET /problems.json
   def index
-    @problems = Problem.all
+    @problems = @competition.problems
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,7 @@ class ProblemsController < ApplicationController
   # GET /problems/new
   # GET /problems/new.json
   def new
-    @problem = Problem.new
+    @problem = @competition.problems.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +41,11 @@ class ProblemsController < ApplicationController
   # POST /problems
   # POST /problems.json
   def create
-    @problem = Problem.new(params[:problem])
+    @problem = @competition.problems.build(params[:problem])
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
+        format.html { redirect_to competition_problem_url(@competition, @problem), notice: 'Problem was successfully created.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.update_attributes(params[:problem])
-        format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
+        format.html { redirect_to competition_problem_url(@competition, @problem), notice: 'Problem was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +77,12 @@ class ProblemsController < ApplicationController
     @problem.destroy
 
     respond_to do |format|
-      format.html { redirect_to problems_url }
+      format.html { redirect_to competition_problems_url(@competition) }
       format.json { head :no_content }
     end
+  end
+  def get_competition
+    @competition = Competition.find(params[:competition_id])
+    #|| Competition.default  -- TODO this doesn't work with routes conf as of now
   end
 end

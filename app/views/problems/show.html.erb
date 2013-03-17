@@ -16,16 +16,6 @@
 </p>
 
 <p>
-  <b>Competition:</b>
-  <%= @problem.competition %>
-</p>
-
-<p>
-  <b>Parent:</b>
-  <%= @problem.parent %>
-</p>
-
-<p>
   <b>Solution:</b>
   <%= @problem.solution %>
 </p>
@@ -41,5 +31,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_problem_path(@problem) %> |
-<%= link_to 'Back', problems_path %>
+<%= link_to 'Edit', edit_competition_problem_path(@competition, @problem) %> |
+<%= link_to 'Back', competition_problems_path(@competition) %>

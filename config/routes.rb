@@ -1,11 +1,8 @@
 Progcomp::Application.routes.draw do
-  resources :problems
 
-
-  resources :teams
-
-
-  resources :competitions
+  resources :competitions do
+    resources :teams, :problems
+  end
 
 
   devise_for :users

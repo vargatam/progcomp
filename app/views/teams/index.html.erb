@@ -15,13 +15,13 @@
     <td><%= team.name %></td>
     <td><%= team.number %></td>
     <td><%= team.competition %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', competition_team_path(@competition, team) %></td>
+    <td><%= link_to 'Edit', edit_competition_team_path(@competition, team) %></td>
+    <td><%= link_to 'Destroy', [team.competition, team], confirm: 'Are you sure?',  method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Team', new_team_path %>
+<%= link_to 'Add Team', new_competition_team_path %>
