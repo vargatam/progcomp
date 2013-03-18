@@ -1,0 +1,14 @@
+<div class = 'subproblem'>
+<h4> <%= "#{problem.number}. #{problem.title}" %> </h4>
+
+<p>
+  <%= problem.text %>
+  <%= link_to 'Edit', edit_competition_problem_path(problem.competition, problem) %>
+  <%= link_to 'Remove', [problem.competition, problem], confirm: 'Are you sure?', method: :delete %>
+</p>
+
+<%= render :partial => "solutions/solve", :locals => { :problem => problem } %>
+
+<%= render problem.subproblems %>
+
+</div>

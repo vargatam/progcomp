@@ -2,22 +2,18 @@
 
 <table>
   <tr>
-    <th>Name</th>
     <th>Number</th>
-    <th>Competition</th>
-    <th></th>
+    <th>Name</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
-    <td><%= team.name %></td>
     <td><%= team.number %></td>
-    <td><%= team.competition %></td>
-    <td><%= link_to 'Show', competition_team_path(@competition, team) %></td>
+    <td><%= link_to team.name, competition_team_path(@competition, team) %></td>
     <td><%= link_to 'Edit', edit_competition_team_path(@competition, team) %></td>
-    <td><%= link_to 'Destroy', [team.competition, team], confirm: 'Are you sure?',  method: :delete %></td>
+    <td><%= link_to 'Remove', [team.competition, team], confirm: 'Are you sure?',  method: :delete %></td>
   </tr>
 <% end %>
 </table>

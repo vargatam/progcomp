@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = @competition.teams
+    @teams = @competition.teams.sort_by{|t| t.number}
 
     respond_to do |format|
       format.html # index.html.erb

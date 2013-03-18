@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @team %> |
-<%= link_to 'Back', competition_teams_path %>
+<%= link_to 'Show', competition_team_path(@competition, @team) %> |
+<%= link_to 'Back', competition_teams_path(@competition) %>

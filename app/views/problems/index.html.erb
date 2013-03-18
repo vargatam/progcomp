@@ -1,29 +1,14 @@
 <h1>Listing problems</h1>
 
 <table>
-  <tr>
-    <th>Number</th>
-    <th>Title</th>
-    <th>Text</th>
-    <th>Solution</th>
-    <th>Solution type</th>
-    <th>Point</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @problems.each do |problem| %>
   <tr>
-    <td><%= problem.number %></td>
-    <td><%= problem.title %></td>
+    <td><b><%= link_to "#{problem.number} #{problem.title}", competition_problem_path(@competition, problem) %></b></td>
     <td><%= problem.text %></td>
-    <td><%= problem.solution %></td>
-    <td><%= problem.solution_type %></td>
-    <td><%= problem.point %></td>
-    <td><%= link_to 'Show', competition_problem_path(@competition, problem) %></td>
+    <td><%= problem.total_points %> points </td>
     <td><%= link_to 'Edit', edit_competition_problem_path(@competition, problem) %></td>
-    <td><%= link_to 'Destroy', [problem.competition, problem], confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Remove', [problem.competition, problem], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
           :rememberable, :trackable
 
-  has_one :team_member
+  has_one :team_member, :dependent => :destroy
   has_one :team, :through => :team_member
   has_many :solutions
   # Setup accessible (or protected) attributes for your model
@@ -16,5 +16,8 @@ class User < ActiveRecord::Base
 
   def is_admin?
     email == 'vargat@elte.hu' || email == 'bartmate'
+  end
+  def self.all_without_team
+    User.all.delete_if{|usr| not usr.team.nil?}.map{|usr| usr.email}
   end
 end

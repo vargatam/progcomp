@@ -1,20 +1,10 @@
 <p id="notice"><%= notice %></p>
+<h1><%= "Team #{@team.number}: #{@team.name}" %></h1>
+<h4>Team Members:</h4>
+<%= render @team.team_members %>
 
-<p>
-  <b>Name:</b>
-  <%= @team.name %>
-</p>
+<h4>Add New Team Member</h4>
+<%= render "team_members/form" %>
 
-<p>
-  <b>Number:</b>
-  <%= @team.number %>
-</p>
-
-<p>
-  <b>Competition:</b>
-  <%= @team.competition %>
-</p>
-
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<%= link_to 'Edit', edit_competition_team_path(@competition, @team) %> |
+<%= link_to 'Back', competition_teams_path(@competition) %>

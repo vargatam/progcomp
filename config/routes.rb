@@ -1,11 +1,15 @@
 Progcomp::Application.routes.draw do
 
+  root :to => 'competitions#index'
+
   resources :competitions do
     resources :teams, :problems
   end
 
-
   devise_for :users
+  resources :team_members
+  #match "team_members" => "team_members#create", :via => :post
+  #match "team_members/:id" => "team_members#destroy", :via => :delete
 
   #get "home/index"
 
@@ -58,7 +62,7 @@ Progcomp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'competitions#index'
+
 
   # See how all your routes lay out with "rake routes"
 

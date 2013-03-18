@@ -3,8 +3,7 @@ class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.json
   def index
-    @problems = @competition.problems
-
+    @problems = @competition.header_problems
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @problems }
@@ -25,7 +24,8 @@ class ProblemsController < ApplicationController
   # GET /problems/new
   # GET /problems/new.json
   def new
-    @problem = @competition.problems.build
+    @problem = @competition.problems.build()
+    @problem.parent_id = params[:parent_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +45,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to competition_problem_url(@competition, @problem), notice: 'Problem was successfully created.' }
+        format.html { redirect_to competition_problem_url(@competition, @problem.parent_top), notice: 'Problem was successfully created.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else
         format.html { render action: "new" }
@@ -74,10 +74,13 @@ class ProblemsController < ApplicationController
   # DELETE /problems/1.json
   def destroy
     @problem = Problem.find(params[:id])
+    parent = @problem.parent
     @problem.destroy
 
     respond_to do |format|
-      format.html { redirect_to competition_problems_url(@competition) }
+      format.html do
+        redirect_to :back
+      end
       format.json { head :no_content }
     end
   end

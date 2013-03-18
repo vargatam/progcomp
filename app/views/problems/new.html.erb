@@ -2,4 +2,8 @@
 
 <%= render 'form' %>
 
+<% if @problem.parent.nil? %>
 <%= link_to 'Back', competition_problems_path(@competition) %>
+<% else %>
+<%= link_to 'Back', competition_problem_path(@competition, @problem.parent_top) %>
+<% end %>

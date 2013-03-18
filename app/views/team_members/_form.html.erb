@@ -1,0 +1,10 @@
+<%= form_tag({:controller => :team_members, :action => :create}, :method => :post) do %>
+    <div class="field">
+      <%= hidden_field_tag :team_id, @team.id %>
+      <%= label_tag :user_email %>
+      <%= select(:team_member, :user_email, User.all_without_team) %>
+    </div>
+    <div class="actions">
+      <%= submit_tag("Add Team Member") %>
+    </div>
+<% end %>

@@ -1,35 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Number:</b>
-  <%= @problem.number %>
-</p>
+<h1> <%= "#{@problem.number}. #{@problem.title}" %> </h1>
 
 <p>
-  <b>Title:</b>
-  <%= @problem.title %>
-</p>
-
-<p>
-  <b>Text:</b>
   <%= @problem.text %>
+  <%= link_to 'Edit', edit_competition_problem_path(@competition, @problem) %>
+
 </p>
 
-<p>
-  <b>Solution:</b>
-  <%= @problem.solution %>
-</p>
+<%= render :partial => "solutions/solve", :locals => { :problem => @problem } %>
+<%= link_to 'Add Subproblem', new_competition_problem_path(@competition, :parent_id => @problem.id) %>
+<%= render @problem.subproblems.sort_by{|sub| sub.number} %>
 
-<p>
-  <b>Solution type:</b>
-  <%= @problem.solution_type %>
-</p>
-
-<p>
-  <b>Point:</b>
-  <%= @problem.point %>
-</p>
-
-
-<%= link_to 'Edit', edit_competition_problem_path(@competition, @problem) %> |
 <%= link_to 'Back', competition_problems_path(@competition) %>
